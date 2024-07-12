@@ -1,12 +1,14 @@
 document.getElementById('start-game').addEventListener('click', startGame);
 
 const hints = [
-    { hint: "img/nature.jpg", question: "What is the largest species of cat in the world?", answer: "Tiger" },
-    { hint: "img/eiffel_tower.jpg", question: "In which city is the Eiffel Tower located?", answer: "Paris" },
+    { hint: "img/lion.jpg", question: "What is the largest species of cat in the world?", answer: "Tiger", difficulty: "easy" },
+    { hint: "img/rainforest.jpg", question: "Which rainforest is the largest in the world?", answer: "Amazon", difficulty: "hard" },
+    { hint: "img/eiffel_tower.jpg", question: "In which city is the Eiffel Tower located?", answer: "Paris", difficulty: "easy" },
+    { hint: "img/scroll.jpg", question: "Who was the first emperor of China?", answer: "Qin Shi Huang", difficulty: "hard" },
     // Add more hints and questions here
 ];
 
-let currentQuestion = 0;
+let currentQuestionIndex = 0;
 let correctAnswers = 0;
 
 function startGame() {
@@ -19,18 +21,20 @@ function loadHints() {
     const hint1 = document.getElementById('hint1');
     const hint2 = document.getElementById('hint2');
 
-    hint1.style.backgroundImage = `url(${hints[currentQuestion].hint})`;
-    hint2.style.backgroundImage = `url(${hints[currentQuestion + 1].hint})`;
+    const hintPair = hints.slice(currentQuestionIndex, currentQuestionIndex + 2);
 
-    hint1.addEventListener('click', () => showQuestion(hints[currentQuestion]));
-    hint2.addEventListener('click', () => showQuestion(hints[currentQuestion + 1]));
+    hint1.style.backgroundImage = `url(${hintPair[0].hint})`;
+    hint2.style.backgroundImage = `url(${hintPair[1].hint})`;
+
+    hint1.onclick = () => showQuestion(hintPair[0]);
+    hint2.onclick = () => showQuestion(hintPair[1]);
 }
 
 function showQuestion(hint) {
     document.getElementById('question-area').style.display = 'block';
     document.getElementById('question').textContent = hint.question;
 
-    document.getElementById('submit-answer').addEventListener('click', () => checkAnswer(hint));
+    document.getElementById('submit-answer').onclick = () => checkAnswer(hint);
 }
 
 function checkAnswer(hint) {
@@ -38,15 +42,18 @@ function checkAnswer(hint) {
 
     if (answer === hint.answer.toLowerCase()) {
         correctAnswers++;
-        currentQuestion += 2;
+        currentQuestionIndex += 2;
         if (correctAnswers === 10) {
             alert('Congratulations! You won the game!');
-        } else {
+            resetGame();
+        } else if (currentQuestionIndex < hints.length) {
             loadHints();
+        } else {
+            alert('You have answered all available questions correctly!');
+            resetGame();
         }
     } else {
         alert('Wrong answer. Try again!');
-        document.getElementById('question-area').style.display = 'none';
     }
 
     document.getElementById('answer').value = '';
@@ -56,4 +63,12 @@ function checkAnswer(hint) {
 
 function updateProgress() {
     document.getElementById('progress').textContent = `Correct answers: ${correctAnswers}`;
+}
+
+function resetGame() {
+    correctAnswers = 0;
+    currentQuestionIndex = 0;
+    document.getElementById('start-game').style.display = 'block';
+    document.getElementById('game-area').style.display = 'none';
+    updateProgress();
 }
