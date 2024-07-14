@@ -1,0 +1,133 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0ebff;
+    text-align: center;
+}
+
+.screen {
+    display: none;
+    padding: 20px;
+}
+
+#start-screen {
+    display: block;
+}
+
+#quiz-screen, #result-screen {
+    display: none;
+}
+
+#quiz {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background-color: #322dbb2c;
+    border: 2px solid #4800fd;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh; /* Adjust height as needed */
+}
+
+
+#start-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #4602ff;
+    border: 2px solid #000;
+    border-radius: 10px;
+    box-shadow: 5px 5px 0px #000;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;   
+}
+
+
+#start-btn:hover {
+    background-color: #fff;
+    color: #8965e5;
+    border: 2px solid #9976f1;
+    box-shadow: 5px 5px 0px #9976f1;
+}
+
+#start-btn:active {
+    background-color: #8c66d797;
+    box-shadow: none;
+    transform: translateY(4px);
+}
+
+button {
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #ffffff;
+    background-color: #4602ff;
+    border:solid 1px #ffffff;
+    border-radius: 25px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline:#fff;
+  }
+  
+  button:hover {
+    background-color: #6a5bf1;
+    box-shadow: 0px 15px 20px rgba(32, 29, 41, 0.804);
+    color: #ffffff;
+    transform: translateY(-7px);
+  }
+  
+  button:active {
+    transform: translateY(-1px);
+  }
+#restartbutton {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #4602ff;
+    border: 2px solid #000;
+    border-radius: 10px;
+    box-shadow: 5px 5px 0px #000;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;   
+}
+
+
+#restartbutton:hover {
+    background-color: #fff;
+    color: #8965e5;
+    border: 2px solid #9976f1;
+    box-shadow: 5px 5px 0px #9976f1;
+}
+
+#restartbutton:active {
+    background-color: #8c66d797;
+    box-shadow: none;
+    transform: translateY(4px);
+}
+
+footer {
+    position: relative;
+    bottom: -8ex;
+}
